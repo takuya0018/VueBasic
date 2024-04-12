@@ -13,7 +13,6 @@ import SlotContents from "./components/SlotContents.vue";
 // parallax
 import ParaCss from "./components/ParaCss.vue";
 // tab
-import SwichTab from "./components/SwitchingTab.vue";
 import NewList from "./components/NewList.vue";
 
 
@@ -27,16 +26,24 @@ const print = function():void {
 // provide
 provide(/* key */ 'userName', /* value */ 'hellow');
 
-
+// tab interface
+interface tabinter {
+  number: Number,
+  id: String,
+  text: String,
+}
 // tab
-const tab = [
+const tab:tabinter[] = [
   {number: 1, id: "1", text: "このコンテンツは１です"},
   {number: 2, id: "2", text: "このコンテンツは２です"},
   {number: 3, id: "3", text: "このコンテンツは３です"},
   {number: 4, id: "4", text: "このコンテンツは４です"},
   {number: 5, id: "5", text: "このコンテンツは５です"},
-  {number: 6, id: "6", text: "このコンテンツは５です"},
+  {number: 6, id: "6", text: "このコンテンツは99です"},
 ]
+const itemTxt = tab.find((tabitem):boolean => tabitem.id === '1')
+const tabfirst = itemTxt?.text;
+const defoText = ref(tabfirst)
 </script>
 
 <template>
@@ -54,8 +61,7 @@ const tab = [
     </SlotContents>
     <ParaCss />
     <AccodionContents question="こんにちは" answer="こんばんわ" />
-    <!-- <SwichTab value="1" text="こんにちは" :aaa="aaa" /> -->
-    <NewList :somethingList="tab"></NewList>
+    <NewList :somethingList="tab" :defoText="defoText"></NewList>
   </main>
 </template>
 

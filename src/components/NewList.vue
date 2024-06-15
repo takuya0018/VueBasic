@@ -24,8 +24,8 @@ const change = function(num:string,txt:string):void {
 }
 
 defineProps({
-  somethingList: Array,
-  defoText: String
+  somethingList: Object,
+  defoText: Object
 })
 </script>
 
